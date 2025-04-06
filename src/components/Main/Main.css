@@ -1,3 +1,44 @@
+.main {
+  background-image: url("../../assets/homepage.png");
+  background-position: fixed;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 576px;
+  color: #fff;
+}
+
+.main__search {
+  display: flex;
+  justify-content: center;
+}
+
+.main__searchbar_title {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 64px;
+  letter-spacing: 0px;
+  word-wrap: normal;
+  padding: 0;
+  margin: auto;
+  margin-top: 80px;
+  margin-bottom: 32px;
+  text-align: left;
+  width: 608px;
+  height: 128px;
+}
+
+.main__searchbar_description {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0px;
+  width: 608px;
+  padding: 0;
+  margin: auto;
+}
+
 .cards__list {
   display: flex;
   flex-wrap: wrap;

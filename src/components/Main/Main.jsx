@@ -1,38 +1,17 @@
-import WeatherCard from "../WeatherCard/WeatherCard";
-import ItemCard from "../ItemCard/ItemCard";
+import Header from "../Header/Header";
 import "./Main.css";
 import { useContext } from "react";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
 
-function Main({ weatherData, handleCardClick, clothingItems, onCardLike }) {
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-
-  return (
-    <main>
-      <WeatherCard weatherData={weatherData} />
-      <section className="cards">
-        <p className="cards__text">
-          Today is {weatherData.temp[currentTemperatureUnit]} &deg; {currentTemperatureUnit} / You may want to wear:
-        </p>
-        <ul className="cards__list">
-          {clothingItems
-            .filter((item) => {
-              return item.weather === weatherData.type;
-            })
-            .map((item) => {
-              return (
-                <ItemCard
-                  key={item._id}
-                  item={item}
-                  onCardClick={handleCardClick}
-                  onCardLike={onCardLike}
-                />
-              );
-            })}
-        </ul>
-      </section>
-    </main>
-  );
+function Main() {
+  return <main className="main">
+    <section className="main__header">
+      <Header/>
+    </section>
+    <div className="main__searchbar">
+      <h1 className="main__searchbar_title">What's going on in the world?</h1>
+      <p className="main__searchbar_description">Find the latest news on any topic and save them in your personal account.</p>
+    </div>
+  </main>;
 }
 
 export default Main;

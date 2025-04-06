@@ -1,35 +1,88 @@
-import { useState } from 'react'
-import reactLogo from '../../assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <div className="page">
+        <div className="page__content">
+          {/* <Main /> */}
+          <Routes>
+            <Route
+              path="/"
+              element={<Main />}
+            />
+            {/* <Route
+              path="/profile"
+              element={
+                <ProtectedRoute
+                  element={
+                    <Profile
+                      onCardClick={handleCardClick}
+                      clothingItems={clothingItems}
+                      onAddGarment={onAddGarment}
+                      onEditProfile={onEditProfile}
+                      onCardLike={handleCardLike}
+                      setIsLoggedIn={setIsLoggedIn}
+                      handleLogout={handleLogout}
+                    />
+                  }
+                />
+              }
+            /> */}
+          </Routes>
+
+          <Footer />
+        </div>
+        {/* {activeModal === "add-garment" && (
+          <AddItemModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "add-garment"}
+            onSubmit={handleAddItemSubmit}
+          />
+        )}
+        {activeModal === "sign-up" && (
+          <RegisterModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "sign-up"}
+            onSubmit={handleRegisterSubmit}
+            onLogin={handleLogIn}
+            isLoading={isLoading}
+          />
+        )}
+        {activeModal === "log-in" && (
+          <LoginModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "log-in"}
+            onSubmit={handleLoginSubmit}
+            onSignUp={handleSignUp}
+            isLoading={isLoading}
+          />
+        )}
+        {activeModal === "edit-profile" && (
+          <EditProfileModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "edit-profile"}
+            onSubmit={handleEditProfileSubmit}
+          />
+        )}
+        {activeModal === "preview" && (
+          <ItemModal
+            activeModal={activeModal}
+            card={selectedCard}
+            onClose={handleCloseModal}
+            isOpen={activeModal === "preview"}
+            handleDeleteItem={handleDeleteItem}
+          />
+        )} */}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

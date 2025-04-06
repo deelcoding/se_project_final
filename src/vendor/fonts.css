@@ -6,13 +6,13 @@
   src: url(../vendor/fonts/roboto-slab-400-regular.woff) format("woff");
 }
 
-@font-face {
+/* @font-face {
   font-family: "Roboto";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: url(../vendor/fonts/roboto-400-regular.woff) format("woff");
-}
+} */
 
 @font-face {
   font-family: "Roboto";
