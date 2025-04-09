@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
+import AboutAuthor from "../AboutTheAuthor/About";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -36,6 +37,7 @@ function App() {
               }
             /> */}
           </Routes>
+          <AboutAuthor />
 
           <Footer />
         </div>
