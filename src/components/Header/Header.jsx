@@ -2,7 +2,7 @@ import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
 
-function Header() {
+function Header({ onSignUp }) {
   return (
     <header className="header">
       <div className="header__name">
@@ -16,13 +16,12 @@ function Header() {
         <div className="header__nav">
           <>
             <button
-              // onClick={onSignUp}
               type="button"
               className="header__home-button">
               <span className="header__button-text">Home</span>
             </button>
             <button
-              // onClick={onLogIn}
+              onClick={onSignUp}
               type="button"
               className="header__signin-button">
               <span className="header__button-text">Sign in</span>
