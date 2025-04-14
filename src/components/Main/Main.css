@@ -46,6 +46,10 @@
   border-radius: 100px;
   overflow: hidden;
   background-color: white;
+  color: #b6bcbf;
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
 }
 
 .main__search-bar_text {
@@ -69,5 +73,8 @@
   height: 64px;
   border-radius: 100px;
   cursor: pointer;
-  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15); /* optional soft shadow */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2); /* optional soft shadow */
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
 }

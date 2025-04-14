@@ -2,7 +2,7 @@ import Header from "../Header/Header";
 import "./Main.css";
 import { useContext } from "react";
 
-function Main({ onSignUp, onSignIn }) {
+function Main({ onSignUp, onSignIn, onSearch }) {
   return (
     <main className="main">
       <section className="main__header">
@@ -23,7 +23,11 @@ function Main({ onSignUp, onSignIn }) {
             placeholder="Enter topic"
             className="main__search-bar_text"
           />
-          <button className="main__search-button">Search</button>
+          <button
+            className="main__search-button"
+            onClick={onSearch}>
+            Search
+          </button>
         </div>
       </div>
     </main>

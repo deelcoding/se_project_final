@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
+
 import "./App.css";
+
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import AboutAuthor from "../AboutTheAuthor/About";
-// import Header from "../Header/Header";
 import RegisterModal from "../RegisterModel/RegisterModal";
 import SignInModal from "../SignInModal/SignInModal";
+import SearchResults from "../SearchResults/SearchResults";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -17,6 +21,7 @@ function App() {
 
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
 
   /**************************************************************************
    *                                 MODAL                                  *
@@ -63,8 +68,16 @@ function App() {
     };
   }, [activeModal]);
 
+  /**************************************************************************
+   *                                 SEARCH                                 *
+   **************************************************************************/
+
+  const onSearch = () => {
+    setHasSearched(true);
+  };
+
   return (
-    <>
+    <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <div className="page__content">
           <Routes>
@@ -74,6 +87,7 @@ function App() {
                 <Main
                   onSignUp={onSignUp}
                   onSignIn={onSignIn}
+                  onSearch={onSearch}
                 />
               }
             />
@@ -95,18 +109,11 @@ function App() {
                 />
               }
             /> */}
+            {hasSearched && <SearchResults />}
           </Routes>
           <AboutAuthor />
-
           <Footer />
         </div>
-        {/* {activeModal === "add-garment" && (
-          <AddItemModal
-            handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "add-garment"}
-            onSubmit={handleAddItemSubmit}
-          />
-        )} */}
         {activeModal === "sign-up" && (
           <RegisterModal
             handleCloseModal={handleCloseModal}
@@ -125,24 +132,8 @@ function App() {
             isLoading={isLoading}
           />
         )}
-        {/* {activeModal === "edit-profile" && (
-          <EditProfileModal
-            handleCloseModal={handleCloseModal}
-            isOpen={activeModal === "edit-profile"}
-            onSubmit={handleEditProfileSubmit}
-          />
-        )} */}
-        {/* {activeModal === "preview" && (
-          <ItemModal
-            activeModal={activeModal}
-            card={selectedCard}
-            onClose={handleCloseModal}
-            isOpen={activeModal === "preview"}
-            handleDeleteItem={handleDeleteItem}
-          />
-        )} */}
       </div>
-    </>
+    </CurrentUserContext.Provider>
   );
 }
 
