@@ -11,6 +11,7 @@ import AboutAuthor from "../AboutTheAuthor/About";
 import RegisterModal from "../RegisterModel/RegisterModal";
 import SignInModal from "../SignInModal/SignInModal";
 import SearchResults from "../SearchResults/SearchResults";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -92,22 +93,8 @@ function App() {
               }
             />
             {/* <Route
-              path="/profile"
-              element={
-                <ProtectedRoute
-                  element={
-                    <Profile
-                      onCardClick={handleCardClick}
-                      clothingItems={clothingItems}
-                      onAddGarment={onAddGarment}
-                      onEditProfile={onEditProfile}
-                      onCardLike={handleCardLike}
-                      setIsLoggedIn={setIsLoggedIn}
-                      handleLogout={handleLogout}
-                    />
-                  }
-                />
-              }
+              path="/saved-news"
+              element={<ProtectedRoute element={<SavedNews />} />}
             /> */}
             {hasSearched && <SearchResults />}
           </Routes>

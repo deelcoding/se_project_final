@@ -1,4 +1,5 @@
 import Header from "../Header/Header";
+import SearchForm from "../SearchForm/SearchForm";
 import "./Main.css";
 import { useContext } from "react";
 
@@ -17,18 +18,7 @@ function Main({ onSignUp, onSignIn, onSearch }) {
           Find the latest news on any topic and save them in your personal
           account.
         </p>
-        <div className="main__search-bar">
-          <input
-            type="text"
-            placeholder="Enter topic"
-            className="main__search-bar_text"
-          />
-          <button
-            className="main__search-button"
-            onClick={onSearch}>
-            Search
-          </button>
-        </div>
+        <SearchForm onSearch={onSearch} />
       </div>
     </main>
   );
