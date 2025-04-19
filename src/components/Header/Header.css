@@ -101,7 +101,7 @@
 
 .header__home-button::after {
   content: "";
-  position: absolute;
+  position: relative;
   bottom: 0;
   left: 10%;
   width: 80%;

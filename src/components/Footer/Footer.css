@@ -3,9 +3,10 @@
   font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 32px 104px 26px;
   margin: 0;
-  max-width: 1358px;
+  max-width: 1440px;
   background-color: #fff;
 }
 
@@ -50,7 +51,7 @@
   .footer {
     margin: 0 auto;
     padding: 0;
-    /* padding: 10px 11px 12px 10px; */
+    padding: 10px 11px 12px 10px;
   }
 }
 
