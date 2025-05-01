@@ -7,6 +7,15 @@
   color: #fff;
 }
 
+.main__search {
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
 .main__search_title {
   font-family: "Roboto Slab", sans-serif;
   font-weight: 400;
@@ -15,11 +24,9 @@
   letter-spacing: 0px;
   word-wrap: normal;
   padding: 0;
-  margin: auto;
   margin-top: 80px;
   margin-bottom: 32px;
-  text-align: left;
-  width: 608px;
+  max-width: 608px;
   height: 128px;
 }
 
@@ -29,9 +36,9 @@
   font-size: 18px;
   line-height: 24px;
   letter-spacing: 0px;
-  width: 608px;
+  max-width: 608px;
   padding: 0;
-  margin: auto;
+  margin: 0;
 }
 
 @media screen and (max-width: 768px) {
@@ -39,9 +46,9 @@
     height: 400px;
   }
 
-  .main__search {
+  /* .main__search {
     text-align: left;
-  }
+  } */
 
   .main__search_title {
     width: 385px;
