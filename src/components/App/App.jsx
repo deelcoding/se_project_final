@@ -73,9 +73,14 @@ function App() {
    *                                 SEARCH                                 *
    **************************************************************************/
 
-  const onSearch = () => {
+  const onSearch = (searchTerm) => {
+    console.log("Searching for:", searchTerm);
     setHasSearched(true);
   };
+
+  /**************************************************************************
+   *                            SUBMIT HANDLERS                             *
+   **************************************************************************/
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
