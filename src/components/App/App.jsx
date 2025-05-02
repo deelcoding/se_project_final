@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { api } from "../../utils/api";
 
 import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
@@ -23,6 +24,10 @@ function App() {
   const [currentUser, setCurrentUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [hasSearched, setHasSearched] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [articles, setArticles] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(false);
+  const [error, setError] = useState("");
 
   /**************************************************************************
    *                                 MODAL                                  *
@@ -74,8 +79,34 @@ function App() {
    **************************************************************************/
 
   const onSearch = (searchTerm) => {
-    console.log("Searching for:", searchTerm);
+    if (!searchTerm.trim()) {
+      setError("Please enter a keyword");
+      return;
+    }
+
+    setIsLoading(true);
+    setError("");
     setHasSearched(true);
+    setSearchQuery(searchTerm);
+
+    fetchArticles(searchTerm, "apiKey")
+      .then((data) => {
+        if (data.articles.length === 0) {
+          setError("Nothing Found");
+          setArticles([]);
+        } else {
+          setArticles(data.articles);
+          setVisibleCount(3);
+        }
+      })
+      .catch(() => {
+        setError(
+          "Sorry, something went wrong during the request. Please try again later."
+        );
+      })
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
   /**************************************************************************
@@ -101,7 +132,15 @@ function App() {
               path="/saved-news"
               element={<ProtectedRoute element={<SavedNews />} />}
             /> */}
-            {hasSearched && <SearchResults />}
+            {hasSearched && (
+              <SearchResults
+                articles={articles}
+                isLoading={isLoading}
+                error={error}
+                visibleCount={visibleCount}
+                onShowMore={() => setVisibleCount((prev) => prev + 3)}
+              />
+            )}
           </Routes>
           <AboutAuthor />
           <Footer />

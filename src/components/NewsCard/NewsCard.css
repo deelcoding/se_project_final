@@ -1,0 +1,67 @@
+.card {
+	background-color: #fff;
+	border-radius: 8px;
+	overflow: hidden;
+	position: relative;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.card__image {
+	width: 100%;
+	height: 180px;
+	object-fit: cover;
+}
+
+.card__details {
+	padding: 16px;
+}
+
+.card__date {
+	font-size: 14px;
+	color: #757575;
+	margin-bottom: 8px;
+}
+
+.card__title {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 0 8px;
+}
+
+.card__description {
+	font-size: 16px;
+	color: #333;
+	margin-bottom: 12px;
+}
+
+.card__source {
+	font-size: 14px;
+	color: #1a73e8;
+}
+
+.card__save {
+	position: absolute;
+	top: 12px;
+	right: 12px;
+	font-size: 24px;
+	cursor: pointer;
+	color: #bbb;
+	transition: color 0.3s;
+}
+
+.card__save.active {
+	color: #1a73e8;
+}
+
+.card__save:hover::after {
+	content: attr(title);
+	position: absolute;
+	top: -24px;
+	right: 0;
+	background: #333;
+	color: #fff;
+	font-size: 12px;
+	padding: 4px 8px;
+	border-radius: 4px;
+	white-space: nowrap;
+}

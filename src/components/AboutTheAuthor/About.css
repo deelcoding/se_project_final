@@ -52,20 +52,20 @@
 @media screen and (max-width: 768px) {
   .about-author {
     height: 354px;
-				gap: 32px;
+    gap: 32px;
   }
 
   .about-author__photo {
     width: 232px;
     height: 232px;
-				margin-top: 61px;
-				margin-left: 40px;
+    margin-top: 61px;
+    margin-left: 40px;
   }
 
   .about-author__narrative {
     width: 424px;
     height: 218px;
-				margin-top: 40px;
+    margin-top: 40px;
   }
 
   .about-author__title {
