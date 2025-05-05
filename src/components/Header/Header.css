@@ -112,7 +112,7 @@
 
 @media screen and (max-width: 768px) {
   .header {
-  padding: 22px 40px 18px 40px;
+    padding: 22px 40px 18px 40px;
   }
 
   .header__signin-button {

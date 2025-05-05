@@ -6,13 +6,16 @@ import "./App.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { api } from "../../utils/api";
 
+import Header from "../Header/Header";
 import Main from "../Main/Main";
+import About from "../AboutTheAuthor/About";
 import Footer from "../Footer/Footer";
 import AboutAuthor from "../AboutTheAuthor/About";
 import RegisterModal from "../RegisterModel/RegisterModal";
 import SignInModal from "../SignInModal/SignInModal";
 import SearchResults from "../SearchResults/SearchResults";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Preloader from "../Preloader/Preloader";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -132,7 +135,7 @@ function App() {
               path="/saved-news"
               element={<ProtectedRoute element={<SavedNews />} />}
             /> */}
-            {hasSearched && (
+            {/* {hasSearched && (
               <SearchResults
                 articles={articles}
                 isLoading={isLoading}
@@ -140,8 +143,10 @@ function App() {
                 visibleCount={visibleCount}
                 onShowMore={() => setVisibleCount((prev) => prev + 3)}
               />
-            )}
+            )} */}
           </Routes>
+          <SearchResults />
+          {/* {<Preloader />} */}
           <AboutAuthor />
           <Footer />
         </div>
