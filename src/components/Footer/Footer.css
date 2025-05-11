@@ -41,6 +41,11 @@
   height: 24px;
 }
 
+.footer__facebook {
+  width: 24px;
+  height: 24px;
+}
+
 @media screen and (max-width: 1100px) {
   .footer {
     padding-top: 10px;

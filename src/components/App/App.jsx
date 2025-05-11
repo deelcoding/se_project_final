@@ -118,7 +118,7 @@ function App() {
       .finally(() => {
         setTimeout(() => {
           setIsLoading(false); // ⏱ delay hiding preloader
-        }, 5000); // 5 seconds
+        }, 1000); // 1 second
       });
   };
 

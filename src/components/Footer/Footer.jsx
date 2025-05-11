@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Footer.css";
 import github from "../../assets/GitHub.svg";
+import facebook from "../../assets/fb.png"
 
 function Footer() {
   return (
@@ -29,6 +30,17 @@ function Footer() {
               src={github}
               alt="GitHub logo"
               className="footer__github"
+            />
+          </Link>
+        </section>
+        <section>
+          <Link
+            to="https://github.com/deelcoding"
+            className="footer__social">
+            <img
+              src={facebook}
+              alt="Facebook logo"
+              className="footer__facebook"
             />
           </Link>
         </section>

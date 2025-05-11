@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./NewsCard.css";
+import defaultImage from "../../assets/notfound.png";
 
 const NewsCard = ({ article }) => {
   if (!article) return null;
@@ -24,6 +25,7 @@ const NewsCard = ({ article }) => {
         </p>
         <h3 className="card__title">{article.title}</h3>
         <p className="card__description">{article.description}</p>
+        <p className="card__source">{article.source.name}</p>
       </div>
 
       <div className="card__save-container">
