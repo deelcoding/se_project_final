@@ -6,9 +6,7 @@ import "./App.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import { api } from "../../utils/api";
 
-import Header from "../Header/Header";
 import Main from "../Main/Main";
-import About from "../AboutTheAuthor/About";
 import Footer from "../Footer/Footer";
 import AboutAuthor from "../AboutTheAuthor/About";
 import RegisterModal from "../RegisterModel/RegisterModal";
@@ -77,6 +75,15 @@ function App() {
     };
   }, [activeModal]);
 
+  // useEffect(() => {
+  //   const fakeUser = {
+  //     name: "Demo User",
+  //     email: "demo@example.com",
+  //     _id: "123",
+  //   };
+  //   setCurrentUser(fakeUser);
+  // }, []);
+
   /**************************************************************************
    *                                 SEARCH                                 *
    **************************************************************************/
@@ -92,7 +99,8 @@ function App() {
     setHasSearched(true);
     setSearchQuery(searchTerm);
 
-    fetchArticles(searchTerm, "apiKey")
+    api
+      .fetchArticles(searchTerm, "apiKey")
       .then((data) => {
         if (data.articles.length === 0) {
           setError("Nothing Found");
@@ -108,7 +116,9 @@ function App() {
         );
       })
       .finally(() => {
-        setIsLoading(false);
+        setTimeout(() => {
+          setIsLoading(false); // ⏱ delay hiding preloader
+        }, 5000); // 5 seconds
       });
   };
 
@@ -135,18 +145,17 @@ function App() {
               path="/saved-news"
               element={<ProtectedRoute element={<SavedNews />} />}
             /> */}
-            {/* {hasSearched && (
-              <SearchResults
-                articles={articles}
-                isLoading={isLoading}
-                error={error}
-                visibleCount={visibleCount}
-                onShowMore={() => setVisibleCount((prev) => prev + 3)}
-              />
-            )} */}
           </Routes>
-          <SearchResults />
-          {/* {<Preloader />} */}
+          {hasSearched && (
+            <SearchResults
+              articles={articles}
+              isLoading={isLoading}
+              error={error}
+              visibleCount={visibleCount}
+              onShowMore={() => setVisibleCount((prev) => prev + 3)}
+            />
+          )}
+          {/* <Preloader/> */}
           <AboutAuthor />
           <Footer />
         </div>

@@ -1,13 +1,18 @@
 import React from "react";
 import "./SearchResults.css";
 import NewsCard from "../NewsCard/NewsCard";
-import { sampleArticles } from "../../utils/mockData";
+import Preloader from "../Preloader/Preloader";
+import NotFound from "../NotFound/NotFound";
 
-const SearchResults = ({ isLoading, error, visibleCount, onShowMore }) => {
-  const articles = sampleArticles;
-  if (isLoading) return <div className="preloader">Loading...</div>;
-  if (error) return <div className="search-error">{error}</div>;
-  if (!articles.length) return null;
+const SearchResults = ({
+  articles,
+  isLoading,
+  error,
+  visibleCount,
+  onShowMore,
+}) => {
+  if (isLoading) return <Preloader />;
+  if (!articles || articles.length === 0) return <NotFound />;
 
   return (
     <section className="search-results">

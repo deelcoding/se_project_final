@@ -13,16 +13,18 @@
 .show-more-btn {
 	display: block;
 	margin: 0 auto;
-	padding: 12px 24px;
-	font-size: 16px;
+	padding: 20px 98px;
+	font-family: "Roboto", sans-serif;
+	font-weight: 500;
+	font-size: 18px;
 	border: none;
-	border-radius: 6px;
-	background-color: #1a73e8;
-	color: #fff;
+	border-radius: 80px;
+	background-color: #fff;
+	color: #1a1b22;
 	cursor: pointer;
 	transition: background-color 0.3s;
 }
 
 .show-more-btn:hover {
-	background-color: #155ab6;
+	background-color: #e8e8e8;
 }

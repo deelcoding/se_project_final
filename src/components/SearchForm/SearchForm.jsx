@@ -8,12 +8,13 @@ function SearchForm({ onSearch }) {
     setInputValue(e.target.value);
   };
 
-  const handleSearchClick = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     onSearch(inputValue);
   };
 
   return (
-    <div className="main__search-bar">
+    <form className="main__search-bar">
       <input
         type="text"
         placeholder="Enter topic"
@@ -22,11 +23,12 @@ function SearchForm({ onSearch }) {
         onChange={handleInputChange}
       />
       <button
+        type="submit"
         className="main__search-button"
-        onClick={handleSearchClick}>
+        onClick={handleSubmit}>
         Search
       </button>
-    </div>
+    </form>
   );
 }
 

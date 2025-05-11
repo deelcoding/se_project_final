@@ -4,7 +4,7 @@ import "./Main.css";
 import Header from "../Header/Header";
 import Navigation from "../Navigation/Navigation";
 
-function Main({ onSignIn, onSignUp }) {
+function Main({ onSignIn, onSignUp, onSearch }) {
   return (
     <main className="main">
       <div className="main__header">
@@ -20,7 +20,7 @@ function Main({ onSignIn, onSignUp }) {
           Find the latest news on any topic and save them in your personal
           account.
         </p>
-        <SearchForm onSearch={(e) => e.preventDefault()} />
+        <SearchForm onSearch={onSearch} />
       </div>
       <section className="main__results">
         <NewsCard />
