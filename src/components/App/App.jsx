@@ -27,7 +27,7 @@ function App() {
   const [hasSearched, setHasSearched] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [articles, setArticles] = useState([]);
-  const [visibleCount, setVisibleCount] = useState(false);
+  const [visibleCount, setVisibleCount] = useState(0);
   const [error, setError] = useState("");
 
   /**************************************************************************
