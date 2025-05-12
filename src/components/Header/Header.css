@@ -23,6 +23,7 @@
 .header__right {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .header__nav {
@@ -56,12 +57,12 @@
 .header__avatar-placeholder {
   width: 40px;
   height: 40px;
-  background-color: #ccc; /* placeholder color */
-  color: #fff; /* text color for the initial */
+  background-color: #ccc;
+  color: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%; /* circular placeholder */
+  border-radius: 50%;
   font-weight: bold;
   font-size: 1rem;
 }
@@ -70,16 +71,32 @@
   display: inline-block;
   text-align: center;
   vertical-align: middle;
+  justify-content: center;
   padding: 0;
   border: none;
   cursor: pointer;
   background-color: transparent;
+  padding-top: 10px;
+  text-decoration: none;
+}
+
+.header__button-text {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.header__saved-button {
+  padding-top: 10px;
+  text-decoration: none;
 }
 
 .header__signin-button {
-  display: inline-block;
-  text-align: center;
-  vertical-align: middle;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 176px;
   height: 48px;
   padding: 12px;
@@ -89,14 +106,37 @@
   background-color: transparent;
 }
 
-.header__button-text {
-  display: inline;
+.header__signin-text {
   font-family: "Roboto", sans-serif;
   font-size: 18px;
   line-height: 24px;
   font-weight: 500;
-  padding: 0;
   color: #fff;
+}
+
+.header__profile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 176px;
+  max-height: 48px;
+  padding: 12px;
+  border: 1px solid #fff;
+  border-radius: 100px;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.header__username {
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.header__logout {
+  width: 24px;
+  height: 24px;
 }
 
 .header__home-button::after {
@@ -108,6 +148,23 @@
   height: 4px;
   background-color: white;
   border-radius: 2px;
+}
+
+.header_theme_dark .header__profile{
+  color: #1a1b22 !important;
+  border-color: #1a1b22 !important;
+}
+
+.header_theme_dark .header__button-text {
+  color: #1a1b22 !important;
+}
+
+.header_theme_dark .header__link {
+  color: #1a1b22 !important;
+}
+
+.header_theme_dark .header__logout {
+  content: url(../../assets/logout-profile.png);
 }
 
 @media screen and (max-width: 768px) {

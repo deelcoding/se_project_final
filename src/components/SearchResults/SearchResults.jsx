@@ -21,6 +21,8 @@ const SearchResults = ({
           <NewsCard
             key={i}
             article={article}
+            isSaved={savedArticles.some((a) => a.url === article.url)}
+            onSave={() => handleSave(article)}
           />
         ))}
       </div>

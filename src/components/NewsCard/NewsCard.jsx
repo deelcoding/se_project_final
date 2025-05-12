@@ -3,10 +3,14 @@ import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./NewsCard.css";
 import defaultImage from "../../assets/notfound.png";
 
-const NewsCard = ({ article }) => {
+const NewsCard = ({ article, isSaved, onSave }) => {
   if (!article) return null;
   const user = useContext(CurrentUserContext);
   const isLoggedIn = !!user;
+
+  const handleClick = () => {
+    if (isLoggedIn) onSave?.();
+  };
 
   return (
     <div className="card">
@@ -34,6 +38,7 @@ const NewsCard = ({ article }) => {
         )}
         <div
           className={`card__save ${isLoggedIn ? "active" : ""}`}
+          onClick={handleClick}
           title={isLoggedIn ? "Save article" : ""}
         />
       </div>

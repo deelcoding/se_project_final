@@ -14,6 +14,7 @@ import SignInModal from "../SignInModal/SignInModal";
 import SearchResults from "../SearchResults/SearchResults";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Preloader from "../Preloader/Preloader";
+import SavedNews from "../SavedNews/SavedNews";
 
 function App() {
   const [count, setCount] = useState(0);
@@ -75,14 +76,14 @@ function App() {
     };
   }, [activeModal]);
 
-  // useEffect(() => {
-  //   const fakeUser = {
-  //     name: "Demo User",
-  //     email: "demo@example.com",
-  //     _id: "123",
-  //   };
-  //   setCurrentUser(fakeUser);
-  // }, []);
+  useEffect(() => {
+    const fakeUser = {
+      name: "Demo User",
+      email: "demo@example.com",
+      _id: "123",
+    };
+    setCurrentUser(fakeUser);
+  }, []);
 
   /**************************************************************************
    *                                 SEARCH                                 *
@@ -126,6 +127,21 @@ function App() {
    *                            SUBMIT HANDLERS                             *
    **************************************************************************/
 
+  const [savedArticles, setSavedArticles] = useState([]);
+
+  const handleSave = (article) => {
+    const alreadySaved = savedArticles.some((a) => a.url === article.url);
+    if (alreadySaved) {
+      setSavedArticles((prev) => prev.filter((a) => a.url !== article.url));
+    } else {
+      setSavedArticles((prev) => [...prev, article]);
+    }
+  };
+
+  /**************************************************************************
+   *                            FULL APPLICATION                            *
+   **************************************************************************/
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
@@ -141,10 +157,10 @@ function App() {
                 />
               }
             />
-            {/* <Route
+            <Route
               path="/saved-news"
               element={<ProtectedRoute element={<SavedNews />} />}
-            /> */}
+            />
           </Routes>
           {hasSearched && (
             <SearchResults
@@ -153,6 +169,8 @@ function App() {
               error={error}
               visibleCount={visibleCount}
               onShowMore={() => setVisibleCount((prev) => prev + 3)}
+              savedArticles={savedArticles}
+              onCardSave={handleSave}
             />
           )}
           {/* <Preloader/> */}
