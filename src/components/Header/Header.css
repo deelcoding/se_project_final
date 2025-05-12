@@ -76,7 +76,7 @@
   border: none;
   cursor: pointer;
   background-color: transparent;
-  padding-top: 10px;
+  padding-top: 13px;
   text-decoration: none;
 }
 
@@ -89,7 +89,7 @@
 }
 
 .header__saved-button {
-  padding-top: 10px;
+  padding-top: 13px;
   text-decoration: none;
 }
 

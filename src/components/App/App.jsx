@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 
 import "./App.css";
 
@@ -17,7 +17,7 @@ import Preloader from "../Preloader/Preloader";
 import SavedNews from "../SavedNews/SavedNews";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const location = useLocation();
 
   /**************************************************************************
    *                               USER STATE                               *
@@ -174,7 +174,7 @@ function App() {
             />
           )}
           {/* <Preloader/> */}
-          <AboutAuthor />
+          {location.pathname !== "/saved-news" && <AboutAuthor />}
           <Footer />
         </div>
         {activeModal === "sign-up" && (
