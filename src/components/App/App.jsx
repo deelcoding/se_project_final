@@ -138,6 +138,12 @@ function App() {
     }
   };
 
+  const handleDeleteArticle = (articleToDelete) => {
+    setSavedArticles((prevArticles) =>
+      prevArticles.filter((article) => article.url !== articleToDelete.url)
+    );
+  };
+
   /**************************************************************************
    *                            FULL APPLICATION                            *
    **************************************************************************/
@@ -159,10 +165,19 @@ function App() {
             />
             <Route
               path="/saved-news"
-              element={<ProtectedRoute element={<SavedNews />} />}
+              element={
+                <ProtectedRoute
+                  element={
+                    <SavedNews
+                      savedArticles={savedArticles}
+                      onDelete={handleDeleteArticle}
+                    />
+                  }
+                />
+              }
             />
           </Routes>
-          {hasSearched && (
+          {location.pathname === "/" && hasSearched && (
             <SearchResults
               articles={articles}
               isLoading={isLoading}
@@ -170,10 +185,9 @@ function App() {
               visibleCount={visibleCount}
               onShowMore={() => setVisibleCount((prev) => prev + 3)}
               savedArticles={savedArticles}
-              onCardSave={handleSave}
+              onSaveArticle={handleSave}
             />
           )}
-          {/* <Preloader/> */}
           {location.pathname !== "/saved-news" && <AboutAuthor />}
           <Footer />
         </div>

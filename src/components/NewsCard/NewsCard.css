@@ -81,23 +81,20 @@
   gap: 5px;
 }
 
-.card__save {
+.card__save-icon {
   width: 24px;
   height: 24px;
-  content: url("../../assets/bookmark_unmarked.png");
-  background-size: cover;
-  background-repeat: no-repeat;
   cursor: pointer;
-  background-color: #fff;
   padding: 8px;
   border-radius: 8px;
+  background-color: white;
 }
 
-.card__save.active {
+/* .card__save:active {
   content: url("../../assets/bookmark_active.png");
-}
+} */
 
-.card__save:hover {
+.card__save-icon:hover {
   content: url("../../assets/bookmark_hover.png");
 }
 

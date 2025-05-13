@@ -10,6 +10,8 @@ const SearchResults = ({
   error,
   visibleCount,
   onShowMore,
+  savedArticles,
+  onSaveArticle
 }) => {
   if (isLoading) return <Preloader />;
   if (!articles || articles.length === 0) return <NotFound />;
@@ -22,7 +24,7 @@ const SearchResults = ({
             key={i}
             article={article}
             isSaved={savedArticles.some((a) => a.url === article.url)}
-            onSave={() => handleSave(article)}
+            onSave={() => onSaveArticle(article)}
           />
         ))}
       </div>

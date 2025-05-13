@@ -1,15 +1,21 @@
 import React, { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./NewsCard.css";
-import defaultImage from "../../assets/notfound.png";
+import bookmarkUnmarked from "../../assets/bookmark_unmarked.png";
+import bookmarkActive from "../../assets/bookmark_active.png";
+import trashIcon from "../../assets/trash.png";
 
-const NewsCard = ({ article, isSaved, onSave }) => {
+const NewsCard = ({ article, isSaved, onSave, onDelete, isSavedPage }) => {
   if (!article) return null;
   const user = useContext(CurrentUserContext);
   const isLoggedIn = !!user;
 
   const handleClick = () => {
-    if (isLoggedIn) onSave?.();
+    if (isSavedPage) {
+      onDelete(article);
+    } else {
+      onSave(article);
+    }
   };
 
   return (
@@ -33,14 +39,22 @@ const NewsCard = ({ article, isSaved, onSave }) => {
       </div>
 
       <div className="card__save-container">
-        {!isLoggedIn && (
+        {!isLoggedIn && !isSavedPage && (
           <div className="card__tooltip">Sign in to save articles</div>
         )}
-        <div
-          className={`card__save ${isLoggedIn ? "active" : ""}`}
-          onClick={handleClick}
-          title={isLoggedIn ? "Save article" : ""}
-        />
+        <div onClick={handleClick}>
+          <img
+            src={
+              isSavedPage
+                ? trashIcon
+                : isSaved
+                ? bookmarkActive
+                : bookmarkUnmarked
+            }
+            alt={isSavedPage ? "Delete article" : "Save article"}
+            className="card__save-icon"
+          />
+        </div>
       </div>
     </div>
   );
