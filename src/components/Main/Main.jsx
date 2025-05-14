@@ -1,35 +1,29 @@
-import WeatherCard from "../WeatherCard/WeatherCard";
-import ItemCard from "../ItemCard/ItemCard";
+import SearchForm from "../SearchForm/SearchForm";
+import NewsCard from "../NewsCard/NewsCard";
 import "./Main.css";
-import { useContext } from "react";
-import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnitContext";
+import Header from "../Header/Header";
+import Navigation from "../Navigation/Navigation";
 
-function Main({ weatherData, handleCardClick, clothingItems, onCardLike }) {
-  const { currentTemperatureUnit } = useContext(CurrentTemperatureUnitContext);
-
+function Main({ onSignIn, onSignUp, onSearch }) {
   return (
-    <main>
-      <WeatherCard weatherData={weatherData} />
-      <section className="cards">
-        <p className="cards__text">
-          Today is {weatherData.temp[currentTemperatureUnit]} &deg; {currentTemperatureUnit} / You may want to wear:
+    <main className="main">
+      <div className="main__header">
+        <Header
+          onSignUp={onSignUp}
+          onSignIn={onSignIn}
+        />
+        {/* <Navigation /> */}
+      </div>
+      <div className="main__search">
+        <h1 className="main__search_title">What's going on in the world?</h1>
+        <p className="main__search_description">
+          Find the latest news on any topic and save them in your personal
+          account.
         </p>
-        <ul className="cards__list">
-          {clothingItems
-            .filter((item) => {
-              return item.weather === weatherData.type;
-            })
-            .map((item) => {
-              return (
-                <ItemCard
-                  key={item._id}
-                  item={item}
-                  onCardClick={handleCardClick}
-                  onCardLike={onCardLike}
-                />
-              );
-            })}
-        </ul>
+        <SearchForm onSearch={onSearch} />
+      </div>
+      <section className="main__results">
+        <NewsCard />
       </section>
     </main>
   );

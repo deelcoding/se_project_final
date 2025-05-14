@@ -7,11 +7,11 @@
 }
 
 @font-face {
-  font-family: "Roboto";
+  font-family: "Inter";
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url(../vendor/fonts/roboto-400-regular.woff) format("woff");
+  src: url(../vendor/fonts/inter-400-regular.woff) format("woff");
 }
 
 @font-face {

@@ -1,0 +1,160 @@
+.card {
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  height: 576px;
+}
+
+.card__image {
+  width: 100%;
+  height: 272px;
+  object-fit: cover;
+}
+
+.card__details {
+  padding: 24px;
+}
+
+.card__date {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  font-size: 18px;
+  color: #b6bcbf;
+  margin: 0;
+}
+
+.card__title {
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 30px;
+  color: #1a1b22;
+  margin: 0;
+  padding: 0;
+  margin-top: 12px;
+  margin-bottom: 16px;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__description {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 22px;
+  color: #1a1b22;
+  margin: 0;
+  margin-bottom: 18px;
+  padding: 0;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card__source {
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  color: #b6bcbf;
+  margin: 0;
+}
+
+.card__keyword {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background-color: white;
+  padding: 8px 22px;
+  border-radius: 10px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+
+.card__save-container {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.card__icons {
+  width: 40px;
+  height: 40px;
+}
+
+.card__save-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.card__save-icon:hover {
+  content: url("../../assets/bookmark_hover.png");
+}
+
+.card__trash-icon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: white;
+}
+
+.card__trash-icon:hover {
+  content: url("../../assets/trashhover.png");
+}
+
+.card__tooltip {
+  display: none;
+  background-color: white;
+  color: black;
+  font-size: 12px;
+  line-height: 100%;
+  padding: 14px 26px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  white-space: nowrap;
+  font-weight: 500;
+  font-family: "Roboto", sans-serif;
+
+  /* Smooth fade-in/out */
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.3s ease-in-out;
+}
+
+/* Show the tooltip when hovering over the container */
+.card__save-container:hover .card__tooltip {
+  display: inline-block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.card:hover {
+  cursor: pointer;
+}

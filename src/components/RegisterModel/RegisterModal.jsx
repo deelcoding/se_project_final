@@ -7,7 +7,7 @@ const RegisterModal = ({
   handleCloseModal,
   onSubmit,
   isOpen,
-  onLogin,
+  onSignIn,
   isLoading,
 }) => {
   const { values, handleChange, isValid, resetForm } = useFormAndValidation();
@@ -19,7 +19,7 @@ const RegisterModal = ({
       .then(() => {
         handleCloseModal(); // Close the modal after successful registration and login
         resetForm(); // Reset form state after submission
-        navigate("/profile"); // Redirect to profile page
+        // navigate("/profile"); // Redirect to profile page
       })
       .catch((error) => {
         console.error("Registration error:", error);
@@ -38,12 +38,12 @@ const RegisterModal = ({
       <label
         htmlFor="email"
         className="modal__label">
-        Email*{" "}
+        Email{" "}
         <input
           type="email"
           className="modal__input"
           id="email"
-          placeholder="Email"
+          placeholder="Enter email"
           name="email"
           value={values.email || ""}
           onChange={handleChange}
@@ -53,12 +53,12 @@ const RegisterModal = ({
       <label
         htmlFor="password"
         className="modal__label">
-        Password*{" "}
+        Password{" "}
         <input
           type="password"
           className="modal__input"
           id="password"
-          placeholder="Password"
+          placeholder="Enter password"
           name="password"
           value={values.password || ""}
           onChange={handleChange}
@@ -68,29 +68,14 @@ const RegisterModal = ({
       <label
         htmlFor="name"
         className="modal__label">
-        Name *{" "}
+        Username{" "}
         <input
           type="text"
           className="modal__input"
           id="name"
-          placeholder="Name"
+          placeholder="Enter your username"
           name="name"
           value={values.name || ""}
-          onChange={handleChange}
-          required
-        />
-      </label>
-      <label
-        htmlFor="avatarURL"
-        className="modal__label">
-        Avatar URL *{" "}
-        <input
-          type="url"
-          className="modal__input"
-          id="avatar"
-          placeholder="Avatar URL"
-          name="avatar"
-          value={values.avatar || ""}
           onChange={handleChange}
           required
         />
@@ -104,8 +89,9 @@ const RegisterModal = ({
         <button
           className="modal__to-login"
           type="button"
-          onClick={onLogin}>
-          <span className="modal__login-button-text">or Log In</span>
+          onClick={onSignIn}
+        >
+          or <span className="modal__login-button-text">Sign In</span>
         </button>
       </div>
     </ModalWithForm>

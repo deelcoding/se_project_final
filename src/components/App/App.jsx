@@ -1,35 +1,231 @@
-import { useState } from 'react'
-import reactLogo from '../../assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import { Route, Routes, useLocation } from "react-router-dom";
+
+import "./App.css";
+
+import CurrentUserContext from "../../contexts/CurrentUserContext";
+import { api } from "../../utils/api";
+
+import Main from "../Main/Main";
+import Footer from "../Footer/Footer";
+import AboutAuthor from "../AboutTheAuthor/About";
+import RegisterModal from "../RegisterModel/RegisterModal";
+import SignInModal from "../SignInModal/SignInModal";
+import SearchResults from "../SearchResults/SearchResults";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
+import Preloader from "../Preloader/Preloader";
+import SavedNews from "../SavedNews/SavedNews";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const location = useLocation();
+
+  /**************************************************************************
+   *                               USER STATE                               *
+   **************************************************************************/
+
+  const [currentUser, setCurrentUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [hasSearched, setHasSearched] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [articles, setArticles] = useState([]);
+  const [visibleCount, setVisibleCount] = useState(0);
+  const [error, setError] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
+
+  /**************************************************************************
+   *                                 MODAL                                  *
+   **************************************************************************/
+
+  const [activeModal, setActiveModal] = useState("");
+
+  const onSignUp = () => {
+    setActiveModal("sign-up");
+  };
+
+  const onSignIn = () => {
+    setActiveModal("sign-in");
+  };
+
+  const handleCloseModal = () => {
+    setActiveModal("");
+  };
+
+  const handleSignUp = () => {
+    setActiveModal("sign-up");
+  };
+
+  const handleSignIn = () => {
+    setActiveModal("sign-in");
+  };
+
+  /**************************************************************************
+   *                               USE EFFECT                               *
+   **************************************************************************/
+
+  useEffect(() => {
+    if (!activeModal) return;
+    const handleEscClose = (e) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    document.addEventListener("keydown", handleEscClose);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscClose);
+    };
+  }, [activeModal]);
+
+/**************************************************************************
+ *      UNCOMMENT THE USEEFFECT BELOW TO HAVE A FAKE USER SIGNED IN       *
+ **************************************************************************/
+
+  // useEffect(() => {
+  //   const fakeUser = {
+  //     name: "Demo User",
+  //     email: "demo@example.com",
+  //     _id: "123",
+  //   };
+  //   setCurrentUser(fakeUser);
+  // }, []);
+
+  /**************************************************************************
+   *                                 SEARCH                                 *
+   **************************************************************************/
+
+  const onSearch = (searchTerm) => {
+    if (!searchTerm.trim()) {
+      setError("Please enter a keyword");
+      return;
+    }
+
+    setIsLoading(true);
+    setError("");
+    setHasSearched(true);
+    setSearchQuery(searchTerm);
+
+    api
+      .fetchArticles(searchTerm, "apiKey")
+      .then((data) => {
+        if (data.articles.length === 0) {
+          setError("Nothing Found");
+          setArticles([]);
+        } else {
+          const articlesWithKeyword = data.articles.map((article) => ({
+            ...article,
+            keyword: searchTerm,
+          }));
+          setArticles(data.articles);
+          setVisibleCount(3);
+        }
+      })
+      .catch(() => {
+        setError(
+          "Sorry, something went wrong during the request. Please try again later."
+        );
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoading(false); // ⏱ delay hiding preloader
+        }, 1000); // 1 second
+      });
+  };
+
+  /**************************************************************************
+   *                            SUBMIT HANDLERS                             *
+   **************************************************************************/
+
+  const [savedArticles, setSavedArticles] = useState([]);
+
+  const handleSave = (article) => {
+    const alreadySaved = savedArticles.some((a) => a.url === article.url);
+    if (alreadySaved) {
+      setSavedArticles((prev) => prev.filter((a) => a.url !== article.url));
+    } else {
+      const articleWithKeyword = {
+        ...article,
+        keyword: searchQuery, // <- add the current search keyword
+      };
+      setSavedArticles((prev) => [...prev, articleWithKeyword]);
+    }
+  };
+
+  const handleDeleteArticle = (articleToDelete) => {
+    setSavedArticles((prevArticles) =>
+      prevArticles.filter((article) => article.url !== articleToDelete.url)
+    );
+  };
+
+  /**************************************************************************
+   *                            FULL APPLICATION                            *
+   **************************************************************************/
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <CurrentUserContext.Provider value={currentUser}>
+      <div className="page">
+        <div className="page__content">
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Main
+                  onSignUp={onSignUp}
+                  onSignIn={onSignIn}
+                  onSearch={onSearch}
+                />
+              }
+            />
+            <Route
+              path="/saved-news"
+              element={
+                <ProtectedRoute
+                  element={
+                    <SavedNews
+                      savedArticles={savedArticles}
+                      onDelete={handleDeleteArticle}
+                    />
+                  }
+                />
+              }
+            />
+          </Routes>
+          {location.pathname === "/" && hasSearched && (
+            <SearchResults
+              articles={articles}
+              isLoading={isLoading}
+              error={error}
+              visibleCount={visibleCount}
+              onShowMore={() => setVisibleCount((prev) => prev + 3)}
+              savedArticles={savedArticles}
+              onSaveArticle={handleSave}
+              searchKeyword={searchQuery}
+            />
+          )}
+          {location.pathname !== "/saved-news" && <AboutAuthor />}
+          <Footer />
+        </div>
+        {activeModal === "sign-up" && (
+          <RegisterModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "sign-up"}
+            // onSubmit={handleRegisterSubmit}
+            onSignIn={handleSignIn}
+            isLoading={isLoading}
+          />
+        )}
+        {activeModal === "sign-in" && (
+          <SignInModal
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "sign-in"}
+            // onSubmit={handleLoginSubmit}
+            onSignUp={handleSignUp}
+            isLoading={isLoading}
+          />
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </CurrentUserContext.Provider>
+  );
 }
 
-export default App
+export default App;
