@@ -77,14 +77,18 @@ function App() {
     };
   }, [activeModal]);
 
-  useEffect(() => {
-    const fakeUser = {
-      name: "Demo User",
-      email: "demo@example.com",
-      _id: "123",
-    };
-    setCurrentUser(fakeUser);
-  }, []);
+/**************************************************************************
+ *      UNCOMMENT THE USEEFFECT BELOW TO HAVE A FAKE USER SIGNED IN       *
+ **************************************************************************/
+
+  // useEffect(() => {
+  //   const fakeUser = {
+  //     name: "Demo User",
+  //     email: "demo@example.com",
+  //     _id: "123",
+  //   };
+  //   setCurrentUser(fakeUser);
+  // }, []);
 
   /**************************************************************************
    *                                 SEARCH                                 *

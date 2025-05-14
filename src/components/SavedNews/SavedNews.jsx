@@ -28,7 +28,14 @@ const SavedNews = ({ savedArticles, onDelete }) => {
         <p className="saved-news__tags">
           By keywords:{" "}
           <span className="saved-news__keywords">
-            {sortedKeywords.slice(0, 3).join(", ")}
+            {sortedKeywords.length === 0 && ""}
+            {sortedKeywords.length === 1 && sortedKeywords[0]}
+            {sortedKeywords.length === 2 &&
+              `${sortedKeywords[0]}, ${sortedKeywords[1]}`}
+            {sortedKeywords.length > 2 &&
+              `${sortedKeywords[0]}, ${sortedKeywords[1]}, and ${
+                sortedKeywords.length - 2
+              } other`}
           </span>
         </p>
       </section>
