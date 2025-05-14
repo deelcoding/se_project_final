@@ -30,6 +30,7 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [visibleCount, setVisibleCount] = useState(0);
   const [error, setError] = useState("");
+  const [searchKeyword, setSearchKeyword] = useState("");
 
   /**************************************************************************
    *                                 MODAL                                  *
@@ -76,14 +77,14 @@ function App() {
     };
   }, [activeModal]);
 
-  // useEffect(() => {
-  //   const fakeUser = {
-  //     name: "Demo User",
-  //     email: "demo@example.com",
-  //     _id: "123",
-  //   };
-  //   setCurrentUser(fakeUser);
-  // }, []);
+  useEffect(() => {
+    const fakeUser = {
+      name: "Demo User",
+      email: "demo@example.com",
+      _id: "123",
+    };
+    setCurrentUser(fakeUser);
+  }, []);
 
   /**************************************************************************
    *                                 SEARCH                                 *
@@ -107,6 +108,10 @@ function App() {
           setError("Nothing Found");
           setArticles([]);
         } else {
+          const articlesWithKeyword = data.articles.map((article) => ({
+            ...article,
+            keyword: searchTerm,
+          }));
           setArticles(data.articles);
           setVisibleCount(3);
         }
@@ -134,7 +139,11 @@ function App() {
     if (alreadySaved) {
       setSavedArticles((prev) => prev.filter((a) => a.url !== article.url));
     } else {
-      setSavedArticles((prev) => [...prev, article]);
+      const articleWithKeyword = {
+        ...article,
+        keyword: searchQuery, // <- add the current search keyword
+      };
+      setSavedArticles((prev) => [...prev, articleWithKeyword]);
     }
   };
 
@@ -186,6 +195,7 @@ function App() {
               onShowMore={() => setVisibleCount((prev) => prev + 3)}
               savedArticles={savedArticles}
               onSaveArticle={handleSave}
+              searchKeyword={searchQuery}
             />
           )}
           {location.pathname !== "/saved-news" && <AboutAuthor />}

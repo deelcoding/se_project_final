@@ -20,6 +20,7 @@ const NewsCard = ({ article, isSaved, onSave, onDelete, isSavedPage }) => {
 
   return (
     <div className="card">
+      <div className="card__keyword">{isSavedPage && article.keyword}</div>
       <img
         src={article.urlToImage}
         alt={article.title}
@@ -42,18 +43,25 @@ const NewsCard = ({ article, isSaved, onSave, onDelete, isSavedPage }) => {
         {!isLoggedIn && !isSavedPage && (
           <div className="card__tooltip">Sign in to save articles</div>
         )}
-        <div onClick={handleClick}>
-          <img
-            src={
-              isSavedPage
-                ? trashIcon
-                : isSaved
-                ? bookmarkActive
-                : bookmarkUnmarked
-            }
-            alt={isSavedPage ? "Delete article" : "Save article"}
+        {isSavedPage && <div className="card__tooltip">Remove from saved</div>}
+
+
+        <div
+          className="card__icons"
+          onClick={handleClick}>
+          {isSavedPage ? (
+            <img
+            src={trashIcon}
+            alt="Delete article"
+            className="card__trash-icon"
+            />
+          ) : (
+            <img
+            src={isSaved ? bookmarkActive : bookmarkUnmarked}
+            alt="Save article"
             className="card__save-icon"
-          />
+            />
+          )}
         </div>
       </div>
     </div>
