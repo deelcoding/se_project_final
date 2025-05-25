@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
-import logout from "../../assets/logout-main.png";
+import logout from "../../assets/logout-main.svg";
 
-function Header({ onSignUp }) {
+function Header({ onSignIn }) {
   const currentUser = useContext(CurrentUserContext);
   const location = useLocation();
 
@@ -50,7 +50,7 @@ function Header({ onSignUp }) {
           ) : (
             <>
               <button
-                onClick={onSignUp}
+                onClick={onSignIn}
                 type="button"
                 className="header__signin-button">
                 <span className="header__signin-text">Sign in</span>

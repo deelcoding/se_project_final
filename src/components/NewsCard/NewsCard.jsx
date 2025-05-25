@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./NewsCard.css";
-import bookmarkUnmarked from "../../assets/bookmark_unmarked.png";
-import bookmarkActive from "../../assets/bookmark_active.png";
-import trashIcon from "../../assets/trash.png";
+import bookmarkUnmarked from "../../assets/bookmark_unmarked.svg";
+import bookmarkActive from "../../assets/bookmark_active.svg";
+import trashIcon from "../../assets/trash.svg";
 
 const NewsCard = ({ article, isSaved, onSave, onDelete, isSavedPage }) => {
   if (!article) return null;

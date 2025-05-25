@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./Footer.css";
 import github from "../../assets/GitHub.svg";
-import facebook from "../../assets/fb.png"
+import facebook from "../../assets/fb.svg";
 
 function Footer() {
   return (
@@ -17,6 +17,7 @@ function Footer() {
             Home
           </Link>
           <Link
+            target="_blank"
             to="http://tripleten.com"
             className="footer__link">
             TripleTen
@@ -24,6 +25,7 @@ function Footer() {
         </section>
         <section>
           <Link
+            target="_blank"
             to="https://github.com/deelcoding"
             className="footer__social">
             <img
@@ -35,7 +37,8 @@ function Footer() {
         </section>
         <section>
           <Link
-            to="https://github.com/deelcoding"
+            target="_blank"
+            to="https://facebook.com"
             className="footer__social">
             <img
               src={facebook}

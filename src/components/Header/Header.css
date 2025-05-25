@@ -164,7 +164,7 @@
 }
 
 .header_theme_dark .header__logout {
-  content: url(../../assets/logout-profile.png);
+  content: url(../../assets/logout-profile.svg);
 }
 
 @media screen and (max-width: 768px) {

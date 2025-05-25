@@ -21,10 +21,10 @@ const SavedNews = ({ savedArticles, onDelete }) => {
       <Header />
       <section className="saved-news__articles">
         <p className="saved-news__header">Saved articles</p>
-        <p className="saved-news__title">
+        <h1 className="saved-news__title">
           {currentUser.name}, you have {savedArticles.length} saved article
           {savedArticles.length !== 1 ? "s" : ""}
-        </p>
+        </h1>
         <p className="saved-news__tags">
           By keywords:{" "}
           <span className="saved-news__keywords">

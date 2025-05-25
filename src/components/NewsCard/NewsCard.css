@@ -113,7 +113,7 @@
 }
 
 .card__save-icon:hover {
-  content: url("../../assets/bookmark_hover.png");
+  content: url("../../assets/bookmark_hover.svg");
 }
 
 .card__trash-icon {
@@ -126,7 +126,7 @@
 }
 
 .card__trash-icon:hover {
-  content: url("../../assets/trashhover.png");
+  content: url("../../assets/trashhover.svg");
 }
 
 .card__tooltip {
