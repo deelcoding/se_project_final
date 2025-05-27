@@ -1,19 +1,24 @@
 import "./RegistrationComplete.css";
 
-function RegistrationComplete({onSignIn}) {
+function RegistrationComplete({ isOpen, onClose, onSignIn }) {
   return (
-    <div className="modal__button-container">
-      <button
-        type="submit"
-        className="modal__submit">
-        Sign in
-      </button>
-      <button
-        className="modal__to-login"
-        type="button"
-        onClick={onSignIn}>
-        or <span className="modal__register-button-text">Sign In</span>
-      </button>
+    <div className={`registration ${isOpen ? "registration_opened" : ""}`}>
+      <div className="registration__content">
+        <h1 className="registration__title">Registration successfully completed!</h1>
+        <button
+          onClick={onClose}
+          type="button"
+          className="registration__close"
+        />
+        <button
+          className="registration__to-login"
+          type="button"
+          onClick={onSignIn}>
+          <span className="modal__register-button-text">Sign In</span>
+        </button>
+      </div>
     </div>
   );
 }
+
+export default RegistrationComplete;

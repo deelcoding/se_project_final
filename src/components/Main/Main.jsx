@@ -4,13 +4,14 @@ import "./Main.css";
 import Header from "../Header/Header";
 import Navigation from "../Navigation/Navigation";
 
-function Main({ onSignIn, onSignUp, onSearch }) {
+function Main({ onSignIn, onSignUp, onSearch,onRegistrationComplete }) {
   return (
     <main className="main">
       <div className="main__header">
         <Header
           onSignUp={onSignUp}
           onSignIn={onSignIn}
+          onRegistrationComplete={onRegistrationComplete}
         />
         {/* <Navigation /> */}
       </div>

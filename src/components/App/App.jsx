@@ -15,6 +15,7 @@ import SearchResults from "../SearchResults/SearchResults";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
 import Preloader from "../Preloader/Preloader";
 import SavedNews from "../SavedNews/SavedNews";
+import RegistrationComplete from "../RegistrationComplete/RegistrationComplete";
 
 function App() {
   const location = useLocation();
@@ -44,6 +45,10 @@ function App() {
 
   const onSignIn = () => {
     setActiveModal("sign-in");
+  };
+
+  const onRegistrationComplete = () => {
+    setActiveModal("registration-complete");
   };
 
   const handleCloseModal = () => {
@@ -77,9 +82,9 @@ function App() {
     };
   }, [activeModal]);
 
-/**************************************************************************
- *      UNCOMMENT THE USEEFFECT BELOW TO HAVE A FAKE USER SIGNED IN       *
- **************************************************************************/
+  /**************************************************************************
+   *      UNCOMMENT THE USEEFFECT BELOW TO HAVE A FAKE USER SIGNED IN       *
+   **************************************************************************/
 
   // useEffect(() => {
   //   const fakeUser = {
@@ -173,6 +178,7 @@ function App() {
                   onSignUp={onSignUp}
                   onSignIn={onSignIn}
                   onSearch={onSearch}
+                  onRegistrationComplete={onRegistrationComplete}
                 />
               }
             />
@@ -203,6 +209,7 @@ function App() {
             />
           )}
           {location.pathname !== "/saved-news" && <AboutAuthor />}
+          <RegistrationComplete />
           <Footer />
         </div>
         {activeModal === "sign-up" && (
@@ -218,6 +225,15 @@ function App() {
           <SignInModal
             handleCloseModal={handleCloseModal}
             isOpen={activeModal === "sign-in"}
+            // onSubmit={handleLoginSubmit}
+            onSignUp={handleSignUp}
+            isLoading={isLoading}
+          />
+        )}
+        {activeModal === "registration-complete" && (
+          <RegistrationComplete
+            handleCloseModal={handleCloseModal}
+            isOpen={activeModal === "registration-complete"}
             // onSubmit={handleLoginSubmit}
             onSignUp={handleSignUp}
             isLoading={isLoading}
