@@ -9,6 +9,7 @@ const RegisterModal = ({
   isOpen,
   onSignIn,
   isLoading,
+  onRegistrationComplete
 }) => {
   const { values, handleChange, isValid, resetForm } = useFormAndValidation();
   const navigate = useNavigate(); // Call useNavigate for redirecting
@@ -20,6 +21,7 @@ const RegisterModal = ({
         handleCloseModal(); // Close the modal after successful registration and login
         resetForm(); // Reset form state after submission
         // navigate("/profile"); // Redirect to profile page
+        onRegistrationComplete();
       })
       .catch((error) => {
         console.error("Registration error:", error);

@@ -4,7 +4,7 @@ import "./Header.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import logout from "../../assets/logout-main.svg";
 
-function Header({ onSignIn, onRegistrationComplete }) {
+function Header({ onSignIn }) {
   const currentUser = useContext(CurrentUserContext);
   const location = useLocation();
 
@@ -54,12 +54,6 @@ function Header({ onSignIn, onRegistrationComplete }) {
                 type="button"
                 className="header__signin-button">
                 <span className="header__signin-text">Sign in</span>
-              </button>
-              <button
-                onClick={onRegistrationComplete}
-                type="button"
-                className="header__signin-button">
-                <span className="header__signin-text">Registration Complete</span>
               </button>
             </>
           )}

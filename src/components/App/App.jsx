@@ -209,7 +209,6 @@ function App() {
             />
           )}
           {location.pathname !== "/saved-news" && <AboutAuthor />}
-          <RegistrationComplete />
           <Footer />
         </div>
         {activeModal === "sign-up" && (
@@ -228,6 +227,7 @@ function App() {
             // onSubmit={handleLoginSubmit}
             onSignUp={handleSignUp}
             isLoading={isLoading}
+            onRegistrationComplete={onRegistrationComplete}
           />
         )}
         {activeModal === "registration-complete" && (

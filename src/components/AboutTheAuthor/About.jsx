@@ -1,8 +1,7 @@
-import React from "react";
 import "./About.css";
 import photo from "../../assets/photo.jpg";
 
-export default function AboutAuthor() {
+function AboutAuthor() {
   return (
     <section className="about-author">
       <div>
@@ -37,3 +36,5 @@ export default function AboutAuthor() {
     </section>
   );
 }
+
+export default AboutAuthor;
