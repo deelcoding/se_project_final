@@ -51,10 +51,10 @@
   background-color: #2a65cc;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 780px) {
   .main__search-bar {
     height: 56px;
-    margin-top: 48px;
+    margin-top: 48px; 
   }
 
   .main__search-bar_text {

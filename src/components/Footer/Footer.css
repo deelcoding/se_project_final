@@ -1,5 +1,4 @@
 .footer {
-  color: #000;
   font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: space-between;
@@ -11,6 +10,7 @@
 }
 
 .footer__name {
+  color: #b6bcbf;
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
@@ -45,6 +45,9 @@
 .footer__facebook {
   width: 24px;
   height: 24px;
+  background-image: url("../../assets/fb.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 @media screen and (max-width: 1100px) {
@@ -55,9 +58,13 @@
 
 @media screen and (max-width: 780px) {
   .footer {
-    margin: 0 auto;
+    margin: 0;
     padding: 0;
-    padding: 10px 11px 12px 10px;
+    padding: 24px 40px 18px;
+  }
+
+  .footer__facebook {
+    background-image: url("../../assets/fb_tablet.svg");
   }
 }
 

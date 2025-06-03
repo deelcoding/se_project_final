@@ -11,14 +11,15 @@ const SearchResults = ({
   visibleCount,
   onShowMore,
   savedArticles,
-  onSaveArticle
+  onSaveArticle,
 }) => {
   if (isLoading) return <Preloader />;
   if (!articles || articles.length === 0) return <NotFound />;
 
   return (
     <section className="search-results">
-      <div className="card-list">
+      <h1 className="search-results__title">Search results</h1>
+      <div className="search-results__list">
         {articles.slice(0, visibleCount).map((article, i) => (
           <NewsCard
             key={i}

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import "./NewsCard.css";
 import bookmarkUnmarked from "../../assets/bookmark_unmarked.svg";
@@ -20,7 +20,7 @@ const NewsCard = ({ article, isSaved, onSave, onDelete, isSavedPage }) => {
 
   return (
     <div className="card">
-      <div className="card__keyword">{isSavedPage && article.keyword}</div>
+      {isSavedPage && <div className="card__keyword">{article.keyword}</div>}
       <img
         src={article.urlToImage}
         alt={article.title}
@@ -45,21 +45,20 @@ const NewsCard = ({ article, isSaved, onSave, onDelete, isSavedPage }) => {
         )}
         {isSavedPage && <div className="card__tooltip">Remove from saved</div>}
 
-
         <div
           className="card__icons"
           onClick={handleClick}>
           {isSavedPage ? (
             <img
-            src={trashIcon}
-            alt="Delete article"
-            className="card__trash-icon"
+              src={trashIcon}
+              alt="Delete article"
+              className="card__trash-icon"
             />
           ) : (
             <img
-            src={isSaved ? bookmarkActive : bookmarkUnmarked}
-            alt="Save article"
-            className="card__save-icon"
+              src={isSaved ? bookmarkActive : bookmarkUnmarked}
+              alt="Save article"
+              className="card__save-icon"
             />
           )}
         </div>

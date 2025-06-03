@@ -152,7 +152,7 @@
 
 .header_theme_dark .header__profile{
   color: #1a1b22 !important;
-  border-color: #1a1b22 !important;
+  border-color: #d1d2d6 !important;
 }
 
 .header_theme_dark .header__button-text {
@@ -167,7 +167,7 @@
   content: url(../../assets/logout-profile.svg);
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 780px) {
   .header {
     padding: 22px 40px 18px 40px;
   }
@@ -181,9 +181,14 @@
   .header__button-text {
     font-size: 16px;
   }
+
+  .header__profile {
+    padding: 8px;
+    max-height: 40px;
+  }
 }
 
-@media screen and (max-width: 380px) {
+@media screen and (max-width: 320px) {
   .header {
     margin: 0 auto;
     max-width: calc(100% - 40px);

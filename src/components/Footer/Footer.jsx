@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import "./Footer.css";
 import github from "../../assets/GitHub.svg";
-import facebook from "../../assets/fb.svg";
 
 function Footer() {
   return (
@@ -40,10 +39,10 @@ function Footer() {
             target="_blank"
             to="https://facebook.com"
             className="footer__social">
-            <img
-              src={facebook}
-              alt="Facebook logo"
+            <div
               className="footer__facebook"
+              role="img"
+              aria-label="Facebook logo"
             />
           </Link>
         </section>
