@@ -23,7 +23,9 @@ function Header({ onSignIn }) {
         <div className="header__nav">
           <Link
             to="/"
-            className="header__home-button">
+            className={`header__home-button ${
+              location.pathname === "/" ? "active" : ""
+            }`}>
             <span className="header__button-text">Home</span>
           </Link>
 
@@ -31,7 +33,9 @@ function Header({ onSignIn }) {
             <>
               <Link
                 to="/saved-news"
-                className="header__saved-button">
+                className={`header__saved-button ${
+                  location.pathname === "/saved-news" ? "active" : ""
+                }`}>
                 <span className="header__button-text">Saved Articles</span>
               </Link>
               <Link
