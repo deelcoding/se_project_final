@@ -1,4 +1,4 @@
-.footer {
+/* .footer {
   font-family: "Roboto", sans-serif;
   display: flex;
   justify-content: space-between;
@@ -48,6 +48,60 @@
   background-image: url("../../assets/fb.svg");
   background-size: cover;
   background-repeat: no-repeat;
+} */
+
+.footer {
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  padding: 24px 40px;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid #d1d2d6;
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 880px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.footer__links {
+  display: flex;
+  gap: 20px;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: #1a1b22;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.footer__socials {
+  display: flex;
+  gap: 20px;
+}
+
+.footer__icon,
+.footer__facebook {
+  width: 24px;
+  height: 24px;
+}
+
+.footer__facebook {
+  background-image: url("../../assets/fb.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.footer__copyright {
+  font-size: 14px;
+  color: #b6bcbf;
 }
 
 @media screen and (max-width: 1100px) {

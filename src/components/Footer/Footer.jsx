@@ -5,48 +5,46 @@ import github from "../../assets/GitHub.svg";
 function Footer() {
   return (
     <footer className="footer">
-      <h2 className="footer__name">
-        &copy; {new Date().getFullYear()} Supersite, Powered by News API
-      </h2>
-      <section className="footer__right">
-        <section className="footer__links">
+      <ul className="footer__list">
+        <li className="footer__links">
           <Link
             to="/"
             className="footer__link">
             Home
           </Link>
           <Link
+            to="https://tripleten.com"
             target="_blank"
-            to="http://tripleten.com"
             className="footer__link">
             TripleTen
           </Link>
-        </section>
-        <section>
+        </li>
+        <li className="footer__socials">
           <Link
-            target="_blank"
             to="https://github.com/deelcoding"
+            target="_blank"
             className="footer__social">
             <img
               src={github}
-              alt="GitHub logo"
-              className="footer__github"
+              alt="GitHub"
+              className="footer__icon"
             />
           </Link>
-        </section>
-        <section>
           <Link
-            target="_blank"
             to="https://facebook.com"
+            target="_blank"
             className="footer__social">
             <div
               className="footer__facebook"
               role="img"
-              aria-label="Facebook logo"
+              aria-label="Facebook"
             />
           </Link>
-        </section>
-      </section>
+        </li>
+        <li className="footer__copyright">
+          &copy; {new Date().getFullYear()} Supersite, Powered by News API
+        </li>
+      </ul>
     </footer>
   );
 }

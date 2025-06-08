@@ -20,7 +20,7 @@ function Header({ onSignIn }) {
         </Link>
       </div>
       <div className="header__right">
-        <div className="header__nav">
+        <nav className="header__nav">
           <Link
             to="/"
             className={`header__home-button ${
@@ -61,7 +61,7 @@ function Header({ onSignIn }) {
               </button>
             </>
           )}
-        </div>
+        </nav>
       </div>
     </header>
   );
