@@ -14,20 +14,25 @@ function SearchForm({ onSearch }) {
   };
 
   return (
-    <form className="main__search-bar">
-      <input
-        type="text"
-        placeholder="Enter topic"
-        className="main__search-bar_text"
-        value={inputValue}
-        onChange={handleInputChange}
-      />
-      <button
-        type="submit"
-        className="main__search-button"
-        onClick={handleSubmit}>
-        Search
-      </button>
+    <form
+      className="search__search-bar"
+      onSubmit={handleSubmit}>
+      <div className="search__input-wrapper">
+        <input
+          type="text"
+          placeholder="Enter topic"
+          className="search__search-bar_text"
+          value={inputValue}
+          onChange={handleInputChange}
+        />
+      </div>
+      <div className="search__button-wrapper">
+        <button
+          type="submit"
+          className="search__search-button">
+          Search
+        </button>
+      </div>
     </form>
   );
 }

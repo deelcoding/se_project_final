@@ -81,7 +81,7 @@
   }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 480px) {
   .about-author {
     max-width: 288px;
     flex-direction: column;
