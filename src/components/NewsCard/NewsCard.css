@@ -206,3 +206,15 @@
     height: 40px;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .card {
+    width: 288px;
+    height: 440px;
+  }
+
+  .card__image {
+    width: 288px;
+    height: 196px;
+  }
+}

@@ -219,6 +219,7 @@
 
   .header__name {
     z-index: 1000;
+    font-size: 16px;
   }
 
   .header--menu-open {
@@ -321,5 +322,15 @@
 
   .header_theme_dark .header__logout {
     content: url(../../assets/logout-main.svg);
+  }
+
+  .header__saved-button.active .header__button-text {
+    border-bottom: none; /* or white if on dark background */
+    padding-bottom: 0;
+  }
+
+  .header__home-button.active .header__button-text {
+    border-bottom: none; /* or white if on dark background */
+    padding-bottom: 0;
   }
 }

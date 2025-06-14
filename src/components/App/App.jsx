@@ -88,7 +88,7 @@ function App() {
 
   useEffect(() => {
     const fakeUser = {
-      name: "Demo User",
+      name: "Elise",
       email: "demo@example.com",
       _id: "123",
     };
