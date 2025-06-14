@@ -24,7 +24,7 @@ function Header({ onSignIn }) {
     <>
       <header
         className={`header ${isSavedNewsPage ? "header_theme_dark" : ""} 
-        ${isMobileMenuOpen ? "header--menu-open" : ""}`}>
+        ${isMobileMenuOpen ? "header__menu-open" : ""}`}>
         <div className="header__name">
           <Link
             to="/"

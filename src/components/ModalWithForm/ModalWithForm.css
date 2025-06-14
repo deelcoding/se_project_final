@@ -188,5 +188,9 @@
   .modal__form {
     margin-top: 24px;
   }
-}
 
+  .modal__submit {
+    height: 64px;
+    margin: 23px auto 0;
+  }
+}
