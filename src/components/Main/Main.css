@@ -16,7 +16,7 @@
   text-align: left;
 }
 
-.main__search_title {
+.main__search-title {
   font-family: "Roboto Slab", sans-serif;
   font-weight: 400;
   font-size: 60px;
@@ -30,7 +30,7 @@
   height: 128px;
 }
 
-.main__search_description {
+.main__search-description {
   font-family: "Roboto", sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -50,7 +50,7 @@
     align-items: center;
   }
 
-  .main__search_title {
+  .main__search-title {
     max-width: 452px;
     height: 80px;
     font-size: 36px;
@@ -59,7 +59,7 @@
     line-height: 40px;
   }
 
-  .main__search_description {
+  .main__search-description {
     max-width: 452px;
     font-size: 18px;
     line-height: 24px;
@@ -71,7 +71,7 @@
     height: 536px;
   }
 
-  .main__search_title {
+  .main__search-title {
     max-width: 285px;
     margin: 0 auto;
     margin-top: 30px;
