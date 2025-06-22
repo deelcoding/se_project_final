@@ -81,16 +81,17 @@
     flex-direction: column;
     gap: 38px;
     align-items: start;
+    max-width: 288px;
   }
 
   .footer__links {
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 200px;
   }
 
   .footer__top {
-    gap: 70px;
+    gap: 14px;
   }
 
   .footer__socials {
@@ -114,10 +115,5 @@
   .footer__links {
     display: flex;
     flex-direction: column;
-    width: 200px;
-  }
-
-  .footer__top {
-    gap: 16px;
   }
 }

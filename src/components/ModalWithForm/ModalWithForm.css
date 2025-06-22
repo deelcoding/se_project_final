@@ -166,7 +166,7 @@
 
   .modal__close {
     position: absolute;
-    top: -16px;
+    top: 16px;
     right: 16px;
     width: 24px;
     height: 24px;
@@ -176,7 +176,6 @@
     background-size: contain;
     border: none;
     cursor: pointer;
-    z-index: 10000;
   }
 
   .modal__title {
