@@ -22,8 +22,8 @@
 
 .modal__close {
   position: absolute;
-  top: -40px;
-  right: -40px;
+  top: 251px;
+  right: 461px;
   border: none;
   background-color: transparent;
   width: 40px;
@@ -116,6 +116,8 @@
 
 @media screen and (max-width: 780px) {
   .modal__close {
+    top: 230px;
+    right: 150px;
     width: 21px;
     height: 21px;
   }
@@ -146,8 +148,7 @@
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    padding-top: 56px; /* height of header */
-    z-index: 10000; /* stay above header */
+    padding-top: 56px;
   }
 
   .modal__content {
@@ -166,11 +167,11 @@
 
   .modal__close {
     position: absolute;
-    top: 16px;
+    top: 19px;
     right: 16px;
     width: 24px;
     height: 24px;
-    background-color: blue;
+    background-color: transparent;
     background-image: url(../../assets/close.svg);
     background-repeat: no-repeat;
     background-size: contain;
@@ -179,13 +180,12 @@
   }
 
   .modal__title {
-    font-size: 20px;
-    font-weight: bold;
-    margin: 48px 0 0; /* pushes content down below the close icon */
+    font-size: 24px;
+    margin: 0;
   }
 
   .modal__form {
-    margin-top: 24px;
+    margin-top: 0;
   }
 
   .modal__submit {

@@ -4,7 +4,7 @@ import "./Header.css";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
 import logout from "../../assets/logout-profile.svg"; // make sure this is the correct import
 
-function Header({ onSignIn }) {
+function Header({ onSignIn, activeModal }) {
   const currentUser = useContext(CurrentUserContext);
   const location = useLocation();
   const isSavedNewsPage = location.pathname === "/saved-news";
@@ -34,16 +34,18 @@ function Header({ onSignIn }) {
           </Link>
         </div>
 
-        <button
-          className="header__menu-toggle"
-          onClick={toggleMobileMenu}
-          aria-label="Toggle menu">
-          {isMobileMenuOpen ? (
-            <span className="header__close-icon">&#10005;</span>
-          ) : (
-            <span className="header__hamburger-icon"></span>
-          )}
-        </button>
+        {!activeModal && (
+          <button
+            className="header__menu-toggle"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu">
+            {isMobileMenuOpen ? (
+              <span className="header__close-icon"></span>
+            ) : (
+              <span className="header__hamburger-icon"></span>
+            )}
+          </button>
+        )}
 
         <div className="header__right">
           <nav

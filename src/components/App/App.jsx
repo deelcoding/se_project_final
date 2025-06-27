@@ -13,7 +13,6 @@ import RegisterModal from "../RegisterModel/RegisterModal";
 import SignInModal from "../SignInModal/SignInModal";
 import SearchResults from "../SearchResults/SearchResults";
 import ProtectedRoute from "../ProtectedRoute/ProtectedRoute";
-import Preloader from "../Preloader/Preloader";
 import SavedNews from "../SavedNews/SavedNews";
 import RegistrationComplete from "../RegistrationComplete/RegistrationComplete";
 
@@ -31,7 +30,6 @@ function App() {
   const [articles, setArticles] = useState([]);
   const [visibleCount, setVisibleCount] = useState(0);
   const [error, setError] = useState("");
-  const [searchKeyword, setSearchKeyword] = useState("");
 
   /**************************************************************************
    *                                 MODAL                                  *
@@ -179,6 +177,7 @@ function App() {
                   onSignIn={onSignIn}
                   onSearch={onSearch}
                   onRegistrationComplete={onRegistrationComplete}
+                  activeModal={activeModal}
                 />
               }
             />

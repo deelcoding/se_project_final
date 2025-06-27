@@ -183,7 +183,7 @@
 
 .header__overlay {
   position: fixed;
-  top: 0;
+  top: 56px;
   left: 0;
   width: 100vw;
   height: 100vh;
@@ -254,19 +254,25 @@
   .header__menu-toggle {
     background: none;
     border: none;
-    font-size: 24px;
+    height: 24px;
+    width: 24px;
     color: white;
     cursor: pointer;
     position: absolute;
     top: 18px;
     right: 20px;
     display: block;
+    padding: 0;
   }
 
-  .header__hamburger-icon,
   .header__close-icon {
-    font-size: 24px;
-    z-index: 1000;
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-image: url("../../assets/mobile-close.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
   }
 
   .header__signin-button {

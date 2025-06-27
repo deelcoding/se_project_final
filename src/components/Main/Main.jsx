@@ -3,13 +3,14 @@ import NewsCard from "../NewsCard/NewsCard";
 import "./Main.css";
 import Header from "../Header/Header";
 
-function Main({ onSignIn, onSignUp, onSearch, onRegistrationComplete }) {
+function Main({ onSignIn, onSignUp, onSearch, onRegistrationComplete, activeModal }) {
   return (
     <main className="main">
       <Header
         onSignUp={onSignUp}
         onSignIn={onSignIn}
         onRegistrationComplete={onRegistrationComplete}
+        activeModal={activeModal}
       />
       <div className="main__search">
         <h1 className="main__search-title">What's going on in the world?</h1>
