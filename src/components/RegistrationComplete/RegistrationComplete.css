@@ -1,0 +1,75 @@
+.registration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #0000004d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0.5s linear, opacity 0.5s ease-in-out;
+  pointer-events: none;
+}
+
+.registration_opened {
+  visibility: visible;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.registration__close {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  background-image: url(../../assets/close.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.registration__title {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+  font-size: 24px;
+  font-weight: 900;
+  line-height: 100%;
+  color: #000;
+  text-align: left;
+}
+
+.registration__content {
+  background-color: #fff;
+  position: relative;
+  padding: 43px 36px 51px;
+  max-width: 430px;
+  box-sizing: border-box;
+  width: 100%;
+  border-radius: 16px;
+  /* border: 1px solid #000; */
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+}
+
+.registration__to-login {
+  margin: 0;
+  background-color: transparent;
+  border: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 100%;
+  color: #2f71e5;
+  margin-top: 14px;
+  padding: 0;
+}
+
+@media screen and (max-width: 630px) {
+  
+}

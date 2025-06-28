@@ -1,96 +1,109 @@
-import { useState, useContext } from "react";
-import headerLogo from "../../images/headerLogo.png";
-import userAvatar from "../../images/user_avatar.png";
+import { useContext, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "./Header.css";
-import ToggleSwitch from "../ToggleSwitch/ToggleSwitch";
-import { Link } from "react-router-dom";
 import CurrentUserContext from "../../contexts/CurrentUserContext";
+import logout from "../../assets/logout-profile.svg"; // make sure this is the correct import
 
-function Header({ onSignUp, onLogIn, onAddGarment, weatherData }) {
-  const currentDate = new Date().toLocaleString("default", {
-    month: "long",
-    day: "numeric",
-  });
-
-  const [value, setValue] = useState(false);
-  const { user } = useContext(CurrentUserContext) || {};
+function Header({ onSignIn, activeModal }) {
   const currentUser = useContext(CurrentUserContext);
+  const location = useLocation();
+  const isSavedNewsPage = location.pathname === "/saved-news";
 
-  const renderAvatar = () => {
-    if (currentUser.avatar) {
-      return (
-        <img
-          src={currentUser.avatar}
-          alt="Avatar"
-          className="header__avatar"
-        />
-      );
-    }
-    console.log(currentUser.avatar);
-    const initial = user.name ? user.name.charAt(0).toUpperCase() : "?";
-    return <div className="header__avatar-placeholder">{initial}</div>;
-  };
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const toggleMobileMenu = () => setMobileMenuOpen(!isMobileMenuOpen);
 
-  // console.log({ user });
+  // Disable scroll when mobile menu is open
+  useEffect(() => {
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "auto";
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isMobileMenuOpen]);
 
   return (
-    <header className="header">
-      <div className="header__logo-location">
-        <Link
-          to="/"
-          className="header__link">
-          <img
-            src={headerLogo}
-            alt="App Logo"
-            className="header__logo"
-          />
-        </Link>
-        <p className="header__date-and-location">
-          {currentDate}, {weatherData.city}
-        </p>
-      </div>
-      <div className="header__right">
-        <div className="header__nav">
-          <ToggleSwitch
-            isOn={value}
-            handleToggle={() => setValue(!value)}
-          />
-          {currentUser ? (
-            <>
-              <button
-                onClick={onAddGarment}
-                type="button"
-                className="header__button">
-                <span className="header__button-text">+ Add clothes</span>
-              </button>
-              <Link
-                to="/profile"
-                className="header__link">
-                <div className="header__profile">
-                  <p className="header__username">{currentUser.name}</p>
-                  {renderAvatar()}
-                </div>
-              </Link>
-            </>
-          ) : (
-            <>
-              <button
-                onClick={onSignUp}
-                type="button"
-                className="header__button">
-                <span className="header__button-text">Sign Up</span>
-              </button>
-              <button
-                onClick={onLogIn}
-                type="button"
-                className="header__button">
-                <span className="header__button-text">Log In</span>
-              </button>
-            </>
-          )}
+    <>
+      <header
+        className={`header ${isSavedNewsPage ? "header_theme_dark" : ""} 
+        ${isMobileMenuOpen ? "header__menu-open" : ""}`}>
+        <div className="header__name">
+          <Link
+            to="/"
+            className="header__link"
+            onClick={() => setMobileMenuOpen(false)}>
+            NewsExplorer
+          </Link>
         </div>
-      </div>
-    </header>
+
+        {!activeModal && (
+          <button
+            className="header__menu-toggle"
+            onClick={toggleMobileMenu}
+            aria-label="Toggle menu">
+            {isMobileMenuOpen ? (
+              <span className="header__close-icon"></span>
+            ) : (
+              <span className="header__hamburger-icon"></span>
+            )}
+          </button>
+        )}
+
+        <div className="header__right">
+          <nav
+            className={`header__nav ${
+              isMobileMenuOpen ? "header__nav--open" : ""
+            }`}>
+            <Link
+              to="/"
+              className="header__home-button"
+              onClick={() => setMobileMenuOpen(false)}>
+              <span className="header__button-text">Home</span>
+            </Link>
+
+            {currentUser ? (
+              <>
+                <Link
+                  to="/saved-news"
+                  className={`header__saved-button ${
+                    location.pathname === "/saved-news" ? "active" : ""
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}>
+                  <span className="header__button-text">Saved Articles</span>
+                </Link>
+                <Link
+                  to="/saved-news"
+                  className="header__link"
+                  onClick={() => setMobileMenuOpen(false)}>
+                  <div className="header__profile">
+                    <p className="header__username">{currentUser.name}</p>
+                    <img
+                      src={logout}
+                      alt="Logout"
+                      className="header__logout"
+                    />
+                  </div>
+                </Link>
+              </>
+            ) : (
+              <button
+                onClick={() => {
+                  onSignIn();
+                  setMobileMenuOpen(false);
+                }}
+                className="header__signin-button">
+                <span className="header__signin-text">Sign in</span>
+              </button>
+            )}
+          </nav>
+        </div>
+      </header>
+
+      {/* Overlay */}
+      {isMobileMenuOpen && (
+        <div
+          className="header__overlay"
+          onClick={toggleMobileMenu}></div>
+      )}
+    </>
   );
 }
 

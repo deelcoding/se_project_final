@@ -1,45 +1,119 @@
 .footer {
-  color: #000;
-  font-family: "Cabinet Grotesk", sans-serif;
+  background-color: #fff;
+  font-family: "Roboto", sans-serif;
+  padding: 32px 104px 26px;
   display: flex;
+  justify-content: center;
+  border-top: 1px solid #d1d2d6;
+}
+
+.footer__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  max-width: 1440px;
+  display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
-  padding: 85px 22px 24px 20px;
-  margin: 0;
-  max-width: 1358px;
+  align-items: center;
 }
 
-.footer__name {
+.footer__top {
+  display: flex;
+  gap: 40px;
+  align-items: center;
+}
+
+.footer__links,
+.footer__socials {
+  display: flex;
+  gap: 20px;
+}
+
+.footer__link {
+  text-decoration: none;
+  color: #1a1b22;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.footer__icon,
+.footer__facebook {
+  width: 24px;
+  height: 24px;
+}
+
+.footer__facebook {
+  background-image: url("../../assets/fb.svg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.footer__copyright {
   font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
-  margin: 0;
+  color: #b6bcbf;
+  white-space: nowrap;
 }
 
-.footer__date {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 20px;
-  margin: 0;
-}
-
-@media screen and (max-width: 1100px){
+@media screen and (max-width: 780px) {
   .footer {
-    padding-top: 10px;
-  }
-}
-
-@media screen and (max-width: 780px){
-  .footer {
-      margin: 0 auto;
-      padding: 0;
-      /* padding: 10px 11px 12px 10px; */
+    padding: 24px 40px 18px;
+    justify-content: space-between;
   }
 
+  .footer__top {
+    gap: 20px;
+  }
+
+  .footer__facebook {
+    background-image: url("../../assets/fb_tablet.svg");
+  }
 }
 
 @media screen and (max-width: 480px) {
   .footer {
-      margin: 0 auto 36px;     
-      max-width: 282px;
+    padding: 22px 20px 24px;
+  }
+
+  .footer__list {
+    display: flex;
+    flex-direction: column;
+    gap: 38px;
+    align-items: start;
+    max-width: 288px;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+  }
+
+  .footer__top {
+    gap: 14px;
+  }
+
+  .footer__socials {
+    height: 74px;
+  }
+
+  .footer__facebook {
+    background-image: url("../../assets/fb.svg");
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .footer {
+    padding: 20px 16px 22px;
+  }
+
+  .footer__list {
+    max-width: 288px;
+  }
+
+  .footer__links {
+    display: flex;
+    flex-direction: column;
   }
 }

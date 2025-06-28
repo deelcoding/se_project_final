@@ -1,38 +1,28 @@
 .modal__button-container {
   display: flex;
-  gap: 12px;
+  flex-direction: column;
   align-items: center;
 }
 
-.modal__link {
-  margin-top: 40px;
-  font-family: "Inter";
-  font-size: 16px;
-  font-weight: 700;
-  text-decoration: none;
-  color: #000;
-  opacity: 30%;
-}
-
-.modal__link_disabled {
-  opacity: 30%;
-  pointer-events: none;
-}
-
 .modal__to-login {
-  margin-top: 32px;
+  display: flex;
+  align-items: center;
+  margin-top: 16px;
   background-color: transparent;
   border: none;
-  color: rgba(0, 0, 0, 0.5);
   cursor: pointer;
   padding: 0;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1;
+  text-align: center;
+  color: #000000;
+  gap: 4px;
 }
 
 .modal__login-button-text {
-  font-family: "Cabinet Grotesk Bold", sans-serif;
-  font-size: 16px;
-  line-height: 1.2;
-  font-weight: 700;
-  padding: 0;
-  color: rgba(0, 0, 0, 0.5);
+  color: #2f71e5;
+  cursor: pointer;
+  text-decoration: none;
 }

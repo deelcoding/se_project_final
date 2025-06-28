@@ -1,9 +1,9 @@
 import { useNavigate } from "react-router-dom";
-import "./LoginModal.css";
+import "./SignInModal.css";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import useFormAndValidation from "../../utils/useFormAndValidation";
 
-const LoginModal = ({ handleCloseModal, onSubmit, isOpen, onSignUp }) => {
+const SignInModal = ({ handleCloseModal, onSubmit, isOpen, onSignUp }) => {
   const { values, handleChange, isValid, resetForm } = useFormAndValidation();
   const navigate = useNavigate(); // Call useNavigate without arguments
 
@@ -14,7 +14,7 @@ const LoginModal = ({ handleCloseModal, onSubmit, isOpen, onSignUp }) => {
       .then(() => {
         handleCloseModal(); // Close the modal after successful submission
         resetForm(); // Reset the form state after submission (even if the submission is unsuccessful)
-        navigate("/profile"); // Redirect to the profile page after successful login/sign-up
+        // navigate("/profile"); // Redirect to the profile page after successful login/sign-up
       })
       .catch((error) => {
         console.error("Login error:", error);
@@ -24,8 +24,8 @@ const LoginModal = ({ handleCloseModal, onSubmit, isOpen, onSignUp }) => {
 
   return (
     <ModalWithForm
-      title="Log In"
-      buttonText="Log In"
+      title="Sign in"
+      buttonText="Sign in"
       onClose={handleCloseModal}
       isOpen={isOpen}
       formValid={isValid}
@@ -33,12 +33,12 @@ const LoginModal = ({ handleCloseModal, onSubmit, isOpen, onSignUp }) => {
       <label
         htmlFor="email"
         className="modal__label">
-        Email*{" "}
+        Email{" "}
         <input
           type="email"
           className="modal__input"
           id="email"
-          placeholder="Email"
+          placeholder="Enter email"
           name="email"
           value={values.email || ""}
           onChange={handleChange}
@@ -48,13 +48,13 @@ const LoginModal = ({ handleCloseModal, onSubmit, isOpen, onSignUp }) => {
       <label
         htmlFor="password"
         className="modal__label">
-        Password*{" "}
+        Password{" "}
         <input
           type="password"
           className="modal__input"
           id="password"
           name="password"
-          placeholder="Password"
+          placeholder="Enter password"
           value={values.password || ""}
           onChange={handleChange}
           required
@@ -64,17 +64,17 @@ const LoginModal = ({ handleCloseModal, onSubmit, isOpen, onSignUp }) => {
         <button
           type="submit"
           className="modal__submit">
-          Log In
+          Sign in
         </button>
         <button
           className="modal__to-register"
           type="button"
           onClick={onSignUp}>
-          <span className="modal__register-button-text">or Sign Up</span>
+          or <span className="modal__register-button-text">Sign Up</span>
         </button>
       </div>
     </ModalWithForm>
   );
 };
 
-export default LoginModal;
+export default SignInModal;
